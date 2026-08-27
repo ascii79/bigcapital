@@ -167,14 +167,11 @@ function InvoiceFormCustomerSelect() {
   const updateEntries = useCustomerUpdateExRate();
 
   // Handles the customer item change.
-  const handleItemChange = (customer: {
-    id: number;
-    currency_code: string;
-  }) => {
+  const handleItemChange = (customer: { id: number; currencyCode: string }) => {
     // If the customer id has changed change the customer id and currency code.
     if (values.customerId !== customer.id) {
       setFieldValue('customerId', customer.id);
-      setFieldValue('currencyCode', customer.currency_code);
+      setFieldValue('currencyCode', customer.currencyCode);
     }
     updateEntries(customer);
   };
