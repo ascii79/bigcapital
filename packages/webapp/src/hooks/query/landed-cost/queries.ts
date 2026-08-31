@@ -23,7 +23,7 @@ import type {
 const commonInvalidateQueries = (queryClient: QueryClient) => {
   queryClient.invalidateQueries({ queryKey: billsKeys.all() });
   queryClient.invalidateQueries({ queryKey: landedCostKeys.all() });
-  queryClient.invalidateQueries({ queryKey: landedCostKeys.transaction() });
+  queryClient.invalidateQueries({ queryKey: landedCostKeys.transactions() });
 };
 
 export function useCreateLandedCost(
@@ -88,7 +88,7 @@ export function useBillLocatedLandedCost(
     'queryKey' | 'queryFn'
   >,
 ) {
-  const fetcher = useApiFetcher();
+  const fetcher = useApiFetcher({ enableCamelCaseTransform: true });
 
   return useQuery({
     ...props,
